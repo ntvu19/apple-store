@@ -6,6 +6,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersController } from './users/users.controller';
 import { UsersModule } from './users/users.module';
 import { UsersService } from './users/users.service';
+import { ProductsModule } from './products/products.module';
+import { CartsModule } from './carts/carts.module';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   imports: [
@@ -15,6 +18,9 @@ import { UsersService } from './users/users.service';
     }),
     MongooseModule.forRoot(process.env.MONGODB),
     UsersModule,
+    ProductsModule,
+    CartsModule,
+    OrdersModule,
   ],
   controllers: [AppController, UsersController],
   providers: [AppService, UsersService],
