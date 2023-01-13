@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
+import { Schema as MongooseSchema, Document } from 'mongoose';
 import { Product } from 'src/products/schemas/product.schema';
 
 @Schema({ _id: false })
 export class ProductOrder extends Document {
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Product' })
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: Product.name })
   productId: Product;
 
   @Prop()
