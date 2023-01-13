@@ -1,12 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
+import { Schema as MongooseSchema, Document } from 'mongoose';
 import { User } from 'src/users/schemas/user.schema';
 import { ProductOrderInterface } from '../interfaces/products.interface';
 import { ProductOrderSchema } from './productOrder.schema';
 
 @Schema()
 export class Order extends Document {
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: User.name })
   userId: User;
 
   @Prop({ type: [ProductOrderSchema] })
@@ -18,22 +18,11 @@ export class Order extends Document {
   @Prop({ required: true })
   address: string;
 
-  @Prop({ required: true })
-  shipping: ShippingEnum;
+  @Prop({ required: true, enum: ['Ship A', 'Ship B'] })
+  shipping: string;
 
-  @Prop({ require: true })
-  payment: PaymentEnum;
-}
-
-export enum ShippingEnum {
-  ShipA = 'Ship A',
-  ShipB = 'Ship B',
-}
-
-export enum PaymentEnum {
-  A = 'COD',
-  B = 'ATM/VISA',
-  C = 'Momo',
+  @Prop({ require: true, enum: ['COD', 'ATM/VISA', 'Momo'] })
+  payment: string;
 }
 
 export const OrderSchema = SchemaFactory.createForClass(Order);
