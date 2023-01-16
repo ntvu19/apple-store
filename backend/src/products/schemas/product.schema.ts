@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Schema as MongooseSchema, Document } from 'mongoose';
+import { Category } from 'src/categories/schemas/category.schema';
 import { SpecsInterface } from '../interfaces/specs.interface';
 import { SpecsSchema } from './specs.schema';
 
@@ -13,6 +14,9 @@ export class Product extends Document {
 
   @Prop({ type: [SpecsSchema], default: [] })
   specs: SpecsInterface[];
+
+  @Prop({ type: MongooseSchema.Types.ObjectId, ref: Category.name })
+  categoryId: Category;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

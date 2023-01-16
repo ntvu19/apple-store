@@ -23,22 +23,6 @@ export class UsersController {
 
   // Sign in and Sign up
 
-  // @Get()
-  // getAllUser(): User[] {
-  //   return this.usersService.getAllUser();
-  // }
-
-  // @Get('/:id')
-  // getUserById(@Param('id') id: number) {
-  //   const userById = this.usersService.getUserById(id);
-  //   return userById == undefined ? { error: 'User not found.' } : userById;
-  // }
-
-  // @Delete('/:id')
-  // deleteUserById(@Param('id') id: number) {
-  //   this.usersService.deleteUserById(id);
-  // }
-
   // @Patch('/:id') // @Body: name: string
   // updateNameOfUserById(
   //   @Param('id') id: number,

@@ -17,6 +17,13 @@ export class User extends Document {
 
   @Prop({ type: [String] })
   address: string[];
+
+  @Prop({
+    required: true,
+    enum: ['MODERATE', 'ADMIN', 'USER'],
+    default: 'USER',
+  })
+  role: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
