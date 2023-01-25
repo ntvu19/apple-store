@@ -24,8 +24,8 @@ export class CategoriesController {
   }
 
   @Get()
-  getAllCategory(): Promise<Category[]> {
-    return this.categoriesService.getAllCategory();
+  getAllCategories(): Promise<Category[]> {
+    return this.categoriesService.getAllCategories();
   }
 
   @Get(':id')
