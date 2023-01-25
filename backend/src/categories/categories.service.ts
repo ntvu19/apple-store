@@ -18,12 +18,17 @@ export class CategoriesService {
     return createdCategory.save();
   }
 
-  async getAllCategory(): Promise<Category[]> {
+  async getAllCategories(): Promise<Category[]> {
     return this.categoryModel.find().exec();
   }
 
-  async getCategoryById(id: string): Promise<Category> {
-    return await this.categoryModel.findById(id).exec();
+  async getCategoryById(id: string): Promise<Category | undefined> {
+    try {
+      return await this.categoryModel.findById(id).exec();
+    } catch (err) {
+      console.log('cannot find category');
+      return undefined;
+    }
   }
 
   async deleteCategoryById(id: string): Promise<any> {
